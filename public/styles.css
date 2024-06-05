@@ -1,41 +1,66 @@
-body { 
-    font-family: Arial, Helvetica, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background: #121212;
-    color:aqua;
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #34add1, #191414);
+  height: 100vh;
+  margin: 0;
+  color: white;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  color: white;
+
+  display: flex;
+  justify-content: flex-end;
+  width: auto;
+  max-width: 80%; /* Ajusta este valor según el ancho deseado */
+  margin: 1rem auto; /* Centra el navbar horizontalmente */
+  border-radius: 15px; /* Bordes redondeados */
+}
+
+.navbar a {
+  color: rgb(19, 18, 18);
+  text-decoration: underline;
+  text-underline-offset: 0.5rem;
+  text-underline-position: below;
+
+  margin-left: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.5rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 
 }
 
-header {
-    text-align: center;
+.navbar a:hover {
+ 
+  color: white;
+
+  background-color: rgb(19, 18, 18);
+
 
 }
 
-
-#loginButton {
-    background-color: aqua;
-    border: none;
-    color: rgb(29, 28, 28);
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 10px 2px;
-    cursor: pointer;
-    border-radius: 25px;
+.content {
+  margin-top: 6rem; /* Ajusta este valor para evitar que el contenido se superponga al navbar */
+  padding: 1rem;
 }
 
-#loginButton:hover {
-    background-color: rgb(29, 28, 28);
-    color: aqua;
+#music-container {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-#loginButton:active {
-    background-color: rgb(29, 28, 28);
-    color: aqua;
+.music-card {
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  margin: 1rem;
+  padding: 1rem;
+  width: calc(25% - 2rem);
 }
+

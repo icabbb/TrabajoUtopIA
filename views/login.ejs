@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="/login.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-header">
+       <img src="/logo.png" alt="UtopIA Logo" width="150px" height="150px">
+          
+          
+      
+    </div>
+    <button id="login">Login con Spotify <i class="fa-brands fa-spotify"></i></button>
+  </div>
+  <script>
+    document.getElementById('login').addEventListener('click', () => {
+      window.location.href = '/auth/login';
+    });
+  </script>
+  <script src="https://kit.fontawesome.com/fcbfc233e8.js" crossorigin="anonymous"></script>
+</body>
+</html>

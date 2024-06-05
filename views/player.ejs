@@ -3,108 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Music Player SPA</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <link rel="stylesheet" href="/style.css">
+  <title>Spotify Clone</title>
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <div id="app">
-    <header>
-      <h1>Music Player</h1>
-    </header>
-    <main>
-      <div id="player"></div>
-    </main>
+  <%- include('partials/navbar') %>
+  <div class="content">
+    <input type="text" id="search" placeholder="Search for a song">
+    <div id="music-container">
+      <!-- Music cards will be appended here -->
+    </div>
   </div>
-  <script src="https://unpkg.com/@mui/material/umd/material-ui.development.js"></script>
-  <script>
-    const accessToken = "<%= access_token %>";
-    window.onload = () => {
-      initializePlayer(accessToken);
-    };
-
-    async function initializePlayer(token) {
-      const player = document.getElementById('player');
-      player.innerHTML = '<p>Loading player...</p>';
-
-      try {
-        const response = await fetch('https://api.spotify.com/v1/me/player', {
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        });
-
-        if (response.status === 204) {
-          player.innerHTML = '<p>No active device found. Please open Spotify on one of your devices.</p>';
-          return;
-        }
-
-        const data = await response.json();
-        player.innerHTML = `
-          <p>Playing: ${data.item.name} by ${data.item.artists.map(artist => artist.name).join(', ')}</p>
-          <img src="${data.item.album.images[0].url}" alt="${data.item.name} album cover">
-          <button onclick="pausePlayback('${token}')">Pause</button>
-          <button onclick="resumePlayback('${token}')">Play</button>
-          <button onclick="nextTrack('${token}')">Next</button>
-          <button onclick="previousTrack('${token}')">Previous</button>
-        `;
-      } catch (error) {
-        console.error('Error initializing player:', error);
-      }
-    }
-
-    async function pausePlayback(token) {
-      try {
-        await fetch('https://api.spotify.com/v1/me/player/pause', {
-          method: 'PUT',
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        });
-      } catch (error) {
-        console.error('Error pausing playback:', error);
-      }
-    }
-
-    async function resumePlayback(token) {
-      try {
-        await fetch('https://api.spotify.com/v1/me/player/play', {
-          method: 'PUT',
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        });
-      } catch (error) {
-        console.error('Error resuming playback:', error);
-      }
-    }
-
-    async function nextTrack(token) {
-      try {
-        await fetch('https://api.spotify.com/v1/me/player/next', {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        });
-      } catch (error) {
-        console.error('Error skipping to next track:', error);
-      }
-    }
-
-    async function previousTrack(token) {
-      try {
-        await fetch('https://api.spotify.com/v1/me/player/previous', {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        });
-      } catch (error) {
-        console.error('Error going to previous track:', error);
-      }
-    }
-  </script>
+  <script src="/scripts/app.js"></script>
 </body>
 </html>
