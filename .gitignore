@@ -1,0 +1,69 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+
+# Prisma files
+prisma/migrations/
+prisma/dev.db
+prisma/dev.db-journal
+
+# Editor directories and files
+.idea/
+.vscode/
+*.swp
+*~
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+*.sublime-project
+
+# Mac OS files
+.DS_Store
+
+# System files
+Thumbs.db
+
+# Coverage directory used by testing tools
+coverage/
+
+# Temporary files
+tmp/
+temp/
+
+# Build directories
+dist/
+build/
+
+# Ignore public and private keys
+*.pem
+*.key
+
+# Ignore compiled code
+*.o
+*.obj
+*.dll
+*.exe
+
+# Ignore archives
+*.zip
+*.tar.gz
+*.rar
+
+# Ignore database files
+*.sqlite
+*.db
+
+# Ignore other specific files
+!.gitignore

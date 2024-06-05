@@ -1,0 +1,41 @@
+body { 
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: #121212;
+    color:aqua;
+
+}
+
+header {
+    text-align: center;
+
+}
+
+
+#loginButton {
+    background-color: aqua;
+    border: none;
+    color: rgb(29, 28, 28);
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 2px;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+#loginButton:hover {
+    background-color: rgb(29, 28, 28);
+    color: aqua;
+}
+
+#loginButton:active {
+    background-color: rgb(29, 28, 28);
+    color: aqua;
+}
