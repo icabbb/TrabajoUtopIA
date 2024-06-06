@@ -3,17 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spotify Clone</title>
+  <title>UtopIA</title>
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <%- include('partials/navbar') %>
+  <div class="navbar">
+    <a href="/profile">Ver Perfil <i class="fa-solid fa-user"></i></a> 
+  </div>
   <div class="content">
-    <input type="text" id="search" placeholder="Search for a song">
-    <div id="music-container">
-      <!-- Music cards will be appended here -->
+    <div class="top-artists">
+      <h2>Top 5 Artistas</h2>
+      <div class="artists-container" id="artists-container"></div>
+    </div>
+    <div class="top-songs">
+      <h2>Top de canciones del artista </h2>
+      <div class="songs-container" id="songs-container"></div>
     </div>
   </div>
+
+  <div id="player-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-background"></div>
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div class="vinyl-container">
+        <img id="vinyl" src="/disco.png" alt="Vinyl" width="200px" height="200px">
+      </div>
+      <h2 id="track-name"></h2>
+      <p id="artist-name"></p>
+      <div class="player-controls">
+        <button class="control-btn" onclick="previousTrack()"><i class="fas fa-backward"></i></button>
+        <button class="control-btn" onclick="togglePlayPause()"><i class="fas fa-play"></i></button>
+        <button class="control-btn" onclick="nextTrack()"><i class="fas fa-forward"></i></button>
+      </div>
+      <div class="progress-bar">
+        <span id="current-time">0:00</span>
+        <input type="range" id="progress" value="0">
+        <span id="total-time">0:00</span>
+      </div>
+      <div class="volume-control">
+        <i class="fas fa-volume-down"></i>
+        <input type="range" id="volume" min="0" max="100" value="50">
+        <i class="fas fa-volume-up"></i>
+      </div>
+    </div>
+  </div>
+
+  <div id="mini-player" class="mini-player">
+    <div class="mini-player-content">
+      <img id="mini-album-cover" src="" alt="Album Cover">
+      <div class="mini-player-info">
+        <h3 id="mini-track-name">Nombre de la canción</h3>
+        <p id="mini-artist-name">Nombre del artista</p>
+        <div class="mini-player-controls">
+          <button class="mini-control-btn" onclick="previousTrack()"><i class="fas fa-backward"></i></button>
+          <button class="mini-control-btn" onclick="togglePlayPause()"><i class="fas fa-play"></i></button>
+          <button class="mini-control-btn" onclick="nextTrack()"><i class="fas fa-forward"></i></button>
+        </div>
+        <div class="mini-progress-bar">
+          <span id="mini-current-time">0:00</span>
+          <input type="range" id="mini-progress" value="0">
+          <span id="mini-total-time">0:00</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://sdk.scdn.co/spotify-player.js"></script>
+  <script>
+    window.spotifyToken = '<%= token %>';
+  </script>
   <script src="/scripts/app.js"></script>
+  <script src="https://kit.fontawesome.com/fcbfc233e8.js" crossorigin="anonymous"></script>
 </body>
 </html>

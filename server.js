@@ -5,6 +5,7 @@ const cors = require('cors');
 const path = require('path');
 const authRoutes = require('./routes/auth');
 const musicRoutes = require('./routes/musicRoutes');
+const profileRoutes = require('./routes/profileRoute'); // Agregar esta línea
 const app = express();
 
 require('dotenv').config();
@@ -37,13 +38,18 @@ app.get('/session-info', (req, res) => {
 
 app.use('/', authRoutes);
 app.use('/music', require('./middlewares/authMiddleware'), musicRoutes);
+app.use('/profile', require('./middlewares/authMiddleware'), profileRoutes); // Agregar esta línea
 
 app.get('/', (req, res) => {
   if (req.session.accessToken) {
-    res.render('player'); // Renderiza tu vista principal si está autenticado
+    res.render('player', { token: req.session.accessToken }); // Renderiza tu vista principal si está autenticado
   } else {
     res.redirect('/login'); // Redirige a la página de login si no está autenticado
   }
+});
+
+app.get('/login', (req, res) => {
+  res.render('login'); // Renderiza la vista de login
 });
 
 const PORT = process.env.PORT || 3000;
